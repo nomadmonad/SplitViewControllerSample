@@ -1,4 +1,5 @@
 #import "DetailViewController.h"
+#import "PopOverViewController.h"
 
 @implementation DetailViewController
 
@@ -25,12 +26,63 @@
     }
 }
 
+- (void)dismissPopOver
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier compare:@"showPopOver"] == NSOrderedSame) {
+        UINavigationController * nvc = segue.destinationViewController;
+        UIPresentationController * pc = nvc.presentationController;
+        pc.delegate = self;
+        // In WWDC 2014 "View Controller Advancements in iOS8",
+        // below codes can show popover on iPhone (Adaptive popover).
+        //
+        // UINavigationController * nvc = segue.destinationViewController;
+        // UIPopoverPresentationController * pvc = nvc.popoverPresentationController;
+        // pvc.delegate = self;
+        //
+        // But On Xcode 6.1, these codes shows FullScreen presentation...
+        // (nvc.popoverPresentationController is nil)
+        // For workarounds, I use presentationController instead of popoverController.
+    }
+}
+
 #pragma mark == UIPopoverPresentationControllerDelegate ==
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
-    return UIModalPresentationFullScreen;
+    return UIModalPresentationNone;
+}
+
+- (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style
+{
+    UIViewController * vc = controller.presentedViewController;
+    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    UIBarButtonItem * btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                          target:self
+                                                                          action:@selector(dismissPopOver)];
+    vc.navigationItem.rightBarButtonItem = btn;
+    return nvc;
 }
 
 
+
+- (IBAction)tapped:(UIButton *)sender
+{
+    UIViewController * vc = [UIViewController new];
+    vc.preferredContentSize = CGSizeMake(400, 500);
+    vc.modalPresentationStyle = UIModalPresentationPopover;
+    vc.popoverPresentationController.delegate = self;
+    
+    UIView * view = [[UIView alloc] initWithFrame:vc.view.bounds];
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    vc.popoverPresentationController.sourceView = (UIView *)sender;
+    vc.popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
 @end

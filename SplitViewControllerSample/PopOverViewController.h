@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface PopOverViewController : UIViewController
+@interface PopOverViewController : UIViewController <UIPopoverPresentationControllerDelegate>
 - (IBAction)closeAction:(UIBarButtonItem *)sender;
 
 @end

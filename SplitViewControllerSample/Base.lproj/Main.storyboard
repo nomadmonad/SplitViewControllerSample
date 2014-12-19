@@ -70,7 +70,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="LH8-yl-Ml2" kind="showDetail" id="tN7-yC-Vcx"/>
+                                    <segue destination="LH8-yl-Ml2" kind="showDetail" identifier="showDetail" id="tN7-yC-Vcx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,21 +120,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXv-Rf-oYD">
-                                <rect key="frame" x="489" y="520" width="61" height="30"/>
-                                <state key="normal" title="PopOver">
+                                <rect key="frame" x="267" y="520" width="283" height="30"/>
+                                <state key="normal" title="Popover Segue - PopOver on Any Device">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="g2X-Y3-bUm" kind="popoverPresentation" popoverAnchorView="mXv-Rf-oYD" id="6GM-Nq-H1I">
+                                    <segue destination="g2X-Y3-bUm" kind="popoverPresentation" identifier="showPopOver" popoverAnchorView="mXv-Rf-oYD" id="6GM-Nq-H1I">
                                         <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
                                     </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-dt-1up">
+                                <rect key="frame" x="317" y="482" width="233" height="30"/>
+                                <state key="normal" title="IBAction - Popover on Any Device">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapped:" destination="gP0-8r-ZsG" eventType="touchUpInside" id="LfW-4H-cQ7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tjp-dt-1up" secondAttribute="trailing" constant="50" id="5n2-8i-ORs"/>
                             <constraint firstAttribute="centerY" secondItem="1gN-WH-GaZ" secondAttribute="centerY" id="Ew2-ee-qaA"/>
                             <constraint firstAttribute="trailing" secondItem="mXv-Rf-oYD" secondAttribute="trailing" constant="50" id="Qwd-ty-Ivz"/>
+                            <constraint firstItem="mXv-Rf-oYD" firstAttribute="top" secondItem="tjp-dt-1up" secondAttribute="bottom" constant="8" id="biW-02-ViD"/>
                             <constraint firstAttribute="centerX" secondItem="1gN-WH-GaZ" secondAttribute="centerX" id="hJg-du-oxx"/>
                             <constraint firstItem="Yc9-kP-CHs" firstAttribute="top" secondItem="mXv-Rf-oYD" secondAttribute="bottom" constant="50" id="ilH-aB-O1O"/>
                         </constraints>
@@ -176,7 +187,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopOver now showing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-jN-TPy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Popover now showing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-jN-TPy">
                                 <rect key="frame" x="213" y="289" width="174" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
