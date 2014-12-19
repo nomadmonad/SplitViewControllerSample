@@ -46,8 +46,24 @@
         //
         // But On Xcode 6.1, these codes shows FullScreen presentation...
         // (nvc.popoverPresentationController is nil)
-        // For workarounds, I use presentationController instead of popoverController.
+        // For workarounds, I use presentationController's delegate instead of popoverController's.
     }
+}
+
+- (IBAction)tapped:(UIButton *)sender
+{
+    UIViewController * vc = [UIViewController new];
+    vc.preferredContentSize = CGSizeMake(400, 500);
+    vc.modalPresentationStyle = UIModalPresentationPopover;
+    vc.popoverPresentationController.delegate = self;
+    
+    UIView * view = [[UIView alloc] initWithFrame:vc.view.bounds];
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    vc.popoverPresentationController.sourceView = (UIView *)sender;
+    vc.popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
+    
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark == UIPopoverPresentationControllerDelegate ==
@@ -68,21 +84,4 @@
     return nvc;
 }
 
-
-
-- (IBAction)tapped:(UIButton *)sender
-{
-    UIViewController * vc = [UIViewController new];
-    vc.preferredContentSize = CGSizeMake(400, 500);
-    vc.modalPresentationStyle = UIModalPresentationPopover;
-    vc.popoverPresentationController.delegate = self;
-    
-    UIView * view = [[UIView alloc] initWithFrame:vc.view.bounds];
-    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    vc.popoverPresentationController.sourceView = (UIView *)sender;
-    vc.popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
-    
-    [self presentViewController:vc animated:YES completion:nil];
-}
 @end
