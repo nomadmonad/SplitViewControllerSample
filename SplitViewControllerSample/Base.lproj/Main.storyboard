@@ -114,14 +114,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail view contents goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gN-WH-GaZ">
-                                <rect key="frame" x="183" y="289" width="235" height="21"/>
+                                <rect key="frame" x="183" y="289" width="235" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXv-Rf-oYD">
-                                <rect key="frame" x="267" y="520" width="283" height="30"/>
-                                <state key="normal" title="Popover Segue - PopOver on Any Device">
+                                <rect key="frame" x="444" y="520" width="106" height="30"/>
+                                <state key="normal" title="Popover Segue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -131,7 +131,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-dt-1up">
-                                <rect key="frame" x="317" y="482" width="233" height="30"/>
+                                <rect key="frame" x="317" y="433" width="233" height="30"/>
                                 <state key="normal" title="IBAction - Popover on Any Device">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -139,20 +139,38 @@
                                     <action selector="tapped:" destination="gP0-8r-ZsG" eventType="touchUpInside" id="LfW-4H-cQ7"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Yk-eH-HDj">
+                                <rect key="frame" x="501" y="475" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segue - switch popover or fullscreen" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-BB-JLX">
+                                <rect key="frame" x="299" y="465" width="193" height="50.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50.5" id="giq-wn-kFf"/>
+                                    <constraint firstAttribute="width" constant="193" id="huf-gR-Va1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8Yk-eH-HDj" firstAttribute="top" secondItem="tjp-dt-1up" secondAttribute="bottom" constant="12" id="3T8-CB-oBD"/>
                             <constraint firstAttribute="trailing" secondItem="tjp-dt-1up" secondAttribute="trailing" constant="50" id="5n2-8i-ORs"/>
+                            <constraint firstItem="mXv-Rf-oYD" firstAttribute="top" secondItem="8Yk-eH-HDj" secondAttribute="bottom" constant="14" id="CAi-mz-kW2"/>
                             <constraint firstAttribute="centerY" secondItem="1gN-WH-GaZ" secondAttribute="centerY" id="Ew2-ee-qaA"/>
+                            <constraint firstItem="8Yk-eH-HDj" firstAttribute="leading" secondItem="SdO-BB-JLX" secondAttribute="trailing" constant="9" id="PDs-g5-A7h"/>
                             <constraint firstAttribute="trailing" secondItem="mXv-Rf-oYD" secondAttribute="trailing" constant="50" id="Qwd-ty-Ivz"/>
-                            <constraint firstItem="mXv-Rf-oYD" firstAttribute="top" secondItem="tjp-dt-1up" secondAttribute="bottom" constant="8" id="biW-02-ViD"/>
                             <constraint firstAttribute="centerX" secondItem="1gN-WH-GaZ" secondAttribute="centerX" id="hJg-du-oxx"/>
                             <constraint firstItem="Yc9-kP-CHs" firstAttribute="top" secondItem="mXv-Rf-oYD" secondAttribute="bottom" constant="50" id="ilH-aB-O1O"/>
+                            <constraint firstItem="mXv-Rf-oYD" firstAttribute="top" secondItem="SdO-BB-JLX" secondAttribute="bottom" constant="4.5" id="ptr-7L-the"/>
+                            <constraint firstAttribute="trailing" secondItem="8Yk-eH-HDj" secondAttribute="trailing" constant="50" id="qCl-UZ-R3r"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="nT1-VY-KDz"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="1gN-WH-GaZ" id="kRz-Cd-qSK"/>
+                        <outlet property="segueSwitch" destination="8Yk-eH-HDj" id="bM2-dF-Wnd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDf-Ul-CO8" userLabel="First Responder" sceneMemberID="firstResponder"/>

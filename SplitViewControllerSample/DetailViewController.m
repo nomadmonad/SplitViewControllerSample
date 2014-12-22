@@ -1,5 +1,4 @@
 #import "DetailViewController.h"
-#import "PopOverViewController.h"
 
 @implementation DetailViewController
 
@@ -70,18 +69,21 @@
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
-    return UIModalPresentationNone;
+    UIModalPresentationStyle ret = UIModalPresentationNone;
+    if (self.segueSwitch.on == YES) {
+        ret = UIModalPresentationFormSheet;
+    }
+    return ret;
 }
 
 - (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style
 {
     UIViewController * vc = controller.presentedViewController;
-    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     UIBarButtonItem * btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                           target:self
                                                                           action:@selector(dismissPopOver)];
     vc.navigationItem.rightBarButtonItem = btn;
-    return nvc;
+    return vc;
 }
 
 @end
